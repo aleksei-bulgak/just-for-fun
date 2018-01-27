@@ -1,0 +1,16 @@
+- name: "Install chrome"
+  apt:
+    name: chromium-browser
+    update_cache: true
+    install_recommends: yes
+    state: present
+    force: true
+
+- name: 'Start chrome in kiosk mode on start'
+  template:
+    src:    "autostart.desktop"
+    dest:   "{{ item.destination }}/{{ item.name }}"
+    owner:  "{{ user }}"
+  with_items:
+    - { name: "chrome.desktop", destination: "/home/{{ user }}/.config/autostart", application: "chromium-browser", arguments: "-incognito --kiosk {{ href }}}" }
+

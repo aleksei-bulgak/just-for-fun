@@ -1,0 +1,18 @@
+#!/usr/bin/env ansible-playbook
+
+---
+- hosts: local
+  remote_user: root
+
+  roles:
+    - role: autostart
+      become: true
+      become_user: pi
+      tags: 
+        - autostart
+
+    - role: configuration
+      become_user: pi
+      become: true
+      tags:
+        - configuration

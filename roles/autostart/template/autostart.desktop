@@ -1,0 +1,4 @@
+[Desktop Entry]
+Encoding=UTF-8
+Name={{ item.application }}
+Exec=/usr/bin/{{ item.application }} {{ item.arguments }}
