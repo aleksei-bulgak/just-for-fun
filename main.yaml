@@ -11,8 +11,14 @@
       tags: 
         - autostart
 
-    - role: configuration
+    - role: screen-blank
       become_user: pi
       become: true
       tags:
-        - configuration
+        - screen
+
+    - role: shutdown-cron
+      become_user: root
+      become: true
+      tags: 
+        - shutdown-cron

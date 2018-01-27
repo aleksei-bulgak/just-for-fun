@@ -1,0 +1,19 @@
+- name: "Install cron"
+  apt:
+    name: cron
+    update_cache: true
+    state: present
+    force: true
+
+- name: "Start cron"
+  service:
+    name: cron
+    state: restarted
+
+- cron:
+    name: "Cron to switch off device at specified time"
+    job: "shutdown -h --no-wall now"
+    hour: 19
+    minute: 0
+  tags:
+    - cron

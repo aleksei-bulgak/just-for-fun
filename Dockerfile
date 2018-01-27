@@ -15,4 +15,4 @@ COPY host_vars app/host_vars
 COPY roles app/roles
 COPY main.yaml app/main.yaml
 
-ENTRYPOINT ["ansible-playbook", "-vvvv", "-i", "hosts", "main.yaml"]
+ENTRYPOINT ["ansible-playbook", "-vvvv", "-i", "app/hosts", "app/main.yaml"]
