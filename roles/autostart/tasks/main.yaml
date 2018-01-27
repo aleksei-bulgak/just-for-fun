@@ -5,12 +5,14 @@
     install_recommends: yes
     state: present
     force: true
+  become_user: root
+  become: true
 
-- name: 'Start chrome in kiosk mode on start'
-  template:
-    src:    "autostart.desktop"
-    dest:   "{{ item.destination }}/{{ item.name }}"
-    owner:  "{{ user }}"
+- name: "Add chrome autostart as new line in LXDE autostart file"
+  lineinfile:
+    dest: "/home/{{ user }}/.config/lxsession/LXDE/autostart"
+    line: "{{ item }}"
   with_items:
-    - { name: "chrome.desktop", destination: "/home/{{ user }}/.config/autostart", application: "chromium-browser", arguments: "-incognito --kiosk {{ href }}}" }
-
+      - "@chromium-browser --incognito --kiosk {{ href }}"
+  tags:
+    - chrome-autostart

@@ -1,19 +1,18 @@
 - name: 'Disable screen shut down'
   lineinfile:
-    path: "/etc/xdg/lxsession/LXDE/autostart"
+    dest: "/home/{{ user }}/.config/lxsession/LXDE/autostart"
     line: "{{ item }}"
-    with_items:
-      - "@xset s off"
-      - "@xset -dpms"
-      - "@xset s noblank"
+  with_items:
+    - "@xset s off"
+    - "@xset -dpms"
+    - "@xset s noblank"
   tags:
     - screen
 
 - name: 'Comment screensaver'
   replace:
-    path: "/etc/xdg/lxsession/LXDE/autostart"
-    regex: "@xscreensaver -no-splah"
+    dest: "/home/{{ user }}/.config/lxsession/LXDE/autostart"
+    regexp: "@xscreensaver -no-splash"
     replace: "#@xscreensaver -no-splah"
-    state: absent
   tags:
     - screen
