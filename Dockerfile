@@ -1,4 +1,5 @@
-FROM base-image:1.0.0
+ARG base_version=1.0.0
+FROM base-image:$base_version
 
 RUN apt-get update && \
     apt-get install -y ansible && \
