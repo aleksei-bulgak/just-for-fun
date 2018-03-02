@@ -1,9 +1,6 @@
 #!/usr/bin/env sh
 if [ -z $1 ]; then echo "Argument that is used as image version is missed" && exit 1; fi;
 
-chmod +x base_image/build.sh
-./base_image/build.sh $1
-
 # $1 imagge version
 docker build -t just-for-fun:$1 .
 

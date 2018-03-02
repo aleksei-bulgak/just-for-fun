@@ -1,0 +1,32 @@
+- name: 'Setup ntp'
+  apt:
+    name: ntpdate
+    update_cache: true
+    state: present
+    force: true
+
+- name: ''
+  shell: timedatectl set-ntp true
+
+- name: 'This is last time. I promise'
+  template:
+    src: timezone
+    dest: /etc/timezone
+    mode: 0755
+    force: True
+  become: true
+  tags: 
+    - timezone
+
+- name: 'Update localtime link based on timezone'
+  file:
+    src: "/usr/share/zoneinfo/{{ timezone }}"
+    dest: /etc/localtime
+    state: link
+  tags: 
+  - timezone
+
+- name: 'Update tzdata'
+  command: /usr/sbin/dpkg-reconfigure --frontend noninteractive tzdata
+  tags: 
+    - timezone

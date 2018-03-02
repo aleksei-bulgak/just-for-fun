@@ -22,3 +22,9 @@
       become: true
       tags: 
         - shutdown-cron
+
+    - role: time
+      become_user: root
+      become: true
+      tags: 
+        - timezone

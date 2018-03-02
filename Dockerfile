@@ -1,5 +1,5 @@
 ARG base_version=1.0.0
-FROM base-image:$base_version
+FROM base-image:${base_version}
 
 RUN apt-get update && \
     apt-get install -y ansible && \
@@ -16,4 +16,4 @@ COPY host_vars app/host_vars
 COPY roles app/roles
 COPY main.yaml app/main.yaml
 
-ENTRYPOINT ["ansible-playbook", "-vvvv", "-i", "app/hosts", "app/main.yaml"]
+ENTRYPOINT ["ansible-playbook", "-vvvv", "-i", "app/hosts", "-c", "local", "app/main.yaml"]
