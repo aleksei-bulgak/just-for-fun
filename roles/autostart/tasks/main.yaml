@@ -10,7 +10,7 @@
 
 - name: "Add chrome autostart as new line in LXDE autostart file"
   lineinfile:
-    dest: "/home/{{ user }}/.config/lxsession/LXDE/autostart"
+    dest: "/home/{{ user }}/.config/lxsession/LXDE-{{ user }}/autostart"
     line: "{{ item }}"
   with_items:
       - "@chromium-browser --incognito --kiosk {{ href }}"

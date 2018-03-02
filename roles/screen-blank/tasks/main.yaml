@@ -1,6 +1,6 @@
 - name: 'Disable screen shut down'
   lineinfile:
-    dest: "/home/{{ user }}/.config/lxsession/LXDE/autostart"
+    dest: "/home/{{ user }}/.config/lxsession/LXDE-{{ user }}/autostart"
     line: "{{ item }}"
   with_items:
     - "@xset s off"
@@ -11,7 +11,7 @@
 
 - name: 'Comment screensaver'
   replace:
-    dest: "/home/{{ user }}/.config/lxsession/LXDE/autostart"
+    dest: "/home/{{ user }}/.config/lxsession/LXDE-{{ user }}/autostart"
     regexp: "@xscreensaver -no-splash"
     replace: "#@xscreensaver -no-splah"
   tags:
