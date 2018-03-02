@@ -15,5 +15,6 @@
     job: "shutdown -h --no-wall now"
     hour: 19
     minute: 0
+    user: root
   tags:
     - cron
