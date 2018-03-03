@@ -12,7 +12,7 @@
 
 - cron:
     name: "Cron to switch off device at specified time"
-    job: "shutdown -h --no-wall now"
+    job: "/sbin/shutdown -h --no-wall now"
     hour: 19
     minute: 0
     user: root
