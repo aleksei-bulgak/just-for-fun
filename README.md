@@ -19,3 +19,5 @@ sudo route add default gw 172.30.0.20
 - Also I suggest to configure ethernet in the following way:
 
 ![`172.30.0.20` is our internal default gateway](./imgs/network-preferences.png)
+
+- [Chec this article to get more info about cec-client configuration](https://blog.gordonturner.com/2016/12/14/using-cec-client-on-a-raspberry-pi/)
