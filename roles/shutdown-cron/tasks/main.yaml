@@ -1,6 +1,6 @@
 - name: "Install cron and cec-client to manage hdmi"
   apt:
-    name: {{ item }}
+    name: "{{ item }}"
     update_cache: true
     state: present
     force: true
@@ -9,18 +9,25 @@
     - cec-utils
   become_user: root
   become: true
+  tags:
+    - cron
+    - cec-client
 
 - name: "Scan the HDMI devices"
   shell: echo "scan" | cec-client RPI -s -d 1
+  tags:
+    - cec-client
 
 - name: "Start cron"
   service:
     name: cron
     state: restarted
+  tags: 
+    - cron
 
 - cron:
-    name: "Cron to switch off device at specified time"
-    job: "echo 'standby {{ tv_id }}' | cec-client RPI -s -d 1 > /home/pi/output.log  2>&1"
+    name: "Cron to switch off TV at specified time"
+    job: "/bin/echo 'standby {{ tv_id }}' | /usr/bin/cec-client RPI -s -d 1 > /home/pi/output.log  2>&1"
     hour: 18
     minute: 0
     user: root
@@ -36,7 +43,7 @@
   tags:
     - cron
 
-- name: 'Turn TV screen on'
+- name: "Turn TV screen on"
   template:
     src: turn-on-screen.sh
     dest: /home/{{ user }}/turn-on-screen.sh

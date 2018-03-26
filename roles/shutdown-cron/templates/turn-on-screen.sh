@@ -1,0 +1,1 @@
+/bin/echo "on {{ tv_id }}" | /usr/bin/cec-client RPI -s -d 1

@@ -5,7 +5,7 @@
     state: present
     force: true
 
-- name: ''
+- name: 'enable ntp'
   shell: timedatectl set-ntp true
 
 - name: 'This is last time. I promise'
