@@ -14,7 +14,7 @@
     - cec-client
 
 - name: "Scan the HDMI devices"
-  shell: echo "scan" | cec-client RPI -s -d 1
+  shell: "/bin/echo "scan" | /usr/bin/cec-client RPI -s -d 31"
   tags:
     - cec-client
 
@@ -27,7 +27,7 @@
 
 - cron:
     name: "Cron to switch off TV at specified time"
-    job: "/bin/echo 'standby {{ tv_id }}' | /usr/bin/cec-client RPI -s -d 1 > /home/pi/output.log  2>&1"
+    job: "/bin/echo 'standby {{ tv_id }}' | /usr/bin/cec-client RPI -s -d 31"
     hour: 18
     minute: 0
     user: root
