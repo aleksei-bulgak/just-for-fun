@@ -21,6 +21,7 @@ sudo route add default gw 172.30.0.20
 ![`172.30.0.20` is our internal default gateway](./imgs/network-preferences.png)
 
 - [Chec this article to get more info about cec-client configuration](https://blog.gordonturner.com/2016/12/14/using-cec-client-on-a-raspberry-pi/)
+- [Another article with good explanation how to use cec-client](https://www.endpoint.com/blog/2012/11/08/using-cec-client-to-control-hdmi-devices)
 
 
 
